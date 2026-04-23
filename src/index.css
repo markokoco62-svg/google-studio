@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-accent: 'Space Grotesk', sans-serif;
+
+  --color-midnight: #080808; /* Deep black bg */
+  --color-nav-bg: #0A0A0A;
+  --color-gold: #D4AF37;     /* Primary Gold */
+  --color-gold-deep: #8E6E2D; /* Deep Bronze */
+  --color-card-bg: #111111;
+  --color-pearl: #E0E0E0;    /* Primary text */
+  --color-silver: #A0A0A0;   /* Muted text */
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  --border-radius-xl: 2px; /* Sharper corners for sophisticated theme */
+}
+
+@layer base {
+  body {
+    @apply bg-midnight text-pearl font-sans selection:bg-gold selection:text-black;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative overflow-hidden rounded-sm bg-gold px-8 py-4 font-accent text-[10px] font-bold tracking-[0.2em] uppercase text-black transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)];
+  }
+
+  .btn-secondary {
+    @apply rounded-sm border border-gold/30 bg-transparent px-8 py-4 font-accent text-[10px] font-bold tracking-[0.2em] uppercase text-gold transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.15)];
+  }
+
+  .glass-card {
+    @apply rounded-md border border-white/10 bg-card-bg backdrop-blur-xl transition-all duration-500 hover:border-gold/30 hover:-translate-y-1 hover:bg-white/[0.02];
+  }
+
+  .badge-glow {
+    @apply inline-flex items-center gap-2 rounded-sm border border-gold/30 bg-gold/5 px-4 py-1.5 font-accent text-[9px] font-bold tracking-[0.2em] uppercase text-gold;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-gradient {
+  @apply bg-gradient-to-br from-gold to-gold-deep bg-clip-text text-transparent;
+}
+
+.divider-gold {
+  @apply h-px w-full bg-gradient-to-r from-gold/40 via-gold/10 to-transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-midnight;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 hover:bg-gold/30;
+}
